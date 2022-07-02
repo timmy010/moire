@@ -1,12 +1,16 @@
 <template>
-  <header-item />
+  <div>
+    <header-item />
+    <footer-item />
+  </div>
 </template>
 
 <script>
 import HeaderItem from '@/components/HeaderItem';
+import FooterItem from '@/components/FooterItem';
 
 export default {
   name: 'HomeView',
-  components: { HeaderItem }
+  components: { FooterItem, HeaderItem }
 };
 </script>
