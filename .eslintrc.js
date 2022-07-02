@@ -138,7 +138,7 @@ module.exports = {
       ObjectExpression: { multiline: true, consistent: true },
       ObjectPattern: { multiline: true, consistent: true }
     }],
-    'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }]
+    'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
   },
 
   extends: [
