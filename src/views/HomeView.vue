@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <body>
     <header-item />
 
     <main class="content container">
@@ -887,7 +887,7 @@
     </main>
 
     <footer-item />
-  </div>
+  </body>
 </template>
 
 <script>

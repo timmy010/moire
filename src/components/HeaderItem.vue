@@ -1,5 +1,6 @@
 <template>
   <header class="header container">
+    <svg-item />
     <div class="header__wrapper">
       <span class="header__info">Каталог</span>
 
@@ -27,8 +28,11 @@
 </template>
 
 <script>
+import SvgItem from '@/components/SvgItem';
+
 export default {
-  name: 'HeaderItem'
+  name: 'HeaderItem',
+  components: { SvgItem }
 };
 </script>
 
