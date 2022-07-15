@@ -5,7 +5,7 @@
       <div class="content__top">
         <ul class="breadcrumbs">
           <li class="breadcrumbs__item">
-            <a class="breadcrumbs__link" href="index.html">
+            <a class="breadcrumbs__link" href="/">
               Каталог
             </a>
           </li>
@@ -16,7 +16,7 @@
           </li>
           <li class="breadcrumbs__item">
             <a class="breadcrumbs__link">
-              Носки с принтом мороженое
+              {{ product.title }}
             </a>
           </li>
         </ul>
@@ -27,8 +27,8 @@
             <img
               width="570"
               height="570"
-              src="img/product-square-1.jpg"
-              srcset="img/product-square-1@2x.jpg 2x"
+              src="/img/product-square-1.jpg"
+              srcset="/img/product-square-1@2x.jpg 2x"
               alt="Название товара"
             >
           </div>
@@ -38,8 +38,8 @@
                 <img
                   width="98"
                   height="98"
-                  src="img/product-square-2.jpg"
-                  srcset="img/product-square-2@2x.jpg 2x"
+                  src="/img/product-square-2.jpg"
+                  srcset="/img/product-square-2@2x.jpg 2x"
                   alt="Название товара"
                 >
               </a>
@@ -49,8 +49,8 @@
                 <img
                   width="98"
                   height="98"
-                  src="img/product-square-3.jpg"
-                  srcset="img/product-square-3@2x.jpg 2x"
+                  src="/img/product-square-3.jpg"
+                  srcset="/img/product-square-3@2x.jpg 2x"
                   alt="Название товара"
                 >
               </a>
@@ -61,7 +61,7 @@
         <div class="item__info">
           <span class="item__code">Артикул: 150030</span>
           <h2 class="item__title">
-            Смартфон Xiaomi Mi Mix 3 6/128GB
+            {{ product.title }}
           </h2>
           <div class="item__form">
             <form class="form" action="#" method="POST">
@@ -89,7 +89,7 @@
                 </div>
 
                 <b class="item__price">
-                  18 990 ₽
+                  {{ product.price }} ₽
                 </b>
               </div>
 
@@ -209,7 +209,29 @@ import FooterItem from '@/components/FooterItem';
 
 export default {
   name: 'ProductView',
-  components: { FooterItem, HeaderItem }
+  components: { FooterItem, HeaderItem },
+  data() {
+    return {
+      product: ''
+    };
+  },
+  computed: {
+    productId() {
+      return this.$route.params.id;
+    }
+  },
+  async mounted() {
+    await this.getProduct();
+  },
+  methods: {
+    async getProduct() {
+      const res = await fetch(
+        `https://vue-moire.skillbox.cc/api/products/${this.productId}`
+      );
+      const product = await res.json();
+      this.product = product;
+    }
+  }
 };
 </script>
 
